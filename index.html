@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <title>Em busca da cidade perdida</title>
+</head>
+<body>
+    <main>
+        <div class="passo ativo" id="passo-0">
+            <img src="img/02-11.jpg" alt="">
+            <p>Em uma tarde chuvosa, enquanto explorava o sótão da minha avó, encontrei um diário antigo. Dentro dele, havia uma história fascinante sobre uma cidade perdida, repleta de mistérios e tesouros escondidos. Decidi que era hora de embarcar nessa aventura!</p>
+            <button class="btn-proximo" data-proximo="1">Amazônia</button>
+            <button class="btn-proximo" data-proximo="2">Cerrado</button>
+        </div>
+        <div class="passo" id="passo-1">
+            <p>Sua jornada começa na Amazônia, onde você se depara com uma trilha desconhecida coberta pela vegetação. A primeira pista está próxima.</p>
+            <button class="btn-proximo" data-proximo="3">Seguir pela trilha</button>
+            <button class="btn-proximo" data-proximo="4">Desistir e voltar para casa</button>
+        </div>
+        <div class="passo" id="passo-2">
+            <p>No Cerrado, você encontra um antigo símbolo em uma pedra que parece indicar a direção da cidade perdida. O que você faz a seguir?</p>
+            <button class="btn-proximo" data-proximo="5">Investigar a pedra</button>
+            <button class="btn-proximo" data-proximo="6">Explorar a flora local</button>
+        </div>
+        <div class="passo" id="passo-3">
+            <p>Na trilha da Amazônia, você encontra uma árvore gigantesca. Em seu tronco, uma mensagem gravada diz que a próxima pista está em uma caverna próxima.</p>
+            <button class="btn-proximo" data-proximo="7">Ir para a caverna</button>
+        </div>
+
+        <div class="passo" id="passo-4">
+            <img src="img/cenario-passo4-voltar-casa.png" alt="imagem voltando para casa e desitindo da aventura">
+            <p>Você decide que a aventura é arriscada demais e volta para casa, sempre se perguntando o que poderia ter descoberto.</p>
+        </div>
+
+        <div class="passo" id="passo-5">
+            <p>Ao investigar a pedra, você encontra uma inscrição que menciona um mapa escondido nas proximidades, levando você a um próximo destino na floresta.</p>
+            <button class="btn-proximo" data-proximo="7">Procurar o mapa na floresta</button>
+        </div>
+
+        <div class="passo" id="passo-6">
+            <p>Enquanto explora a flora, você descobre um grupo de animais que parecem estar protegendo algo. Você se aproxima e encontra um artefato antigo.</p>
+            <button class="btn-proximo" data-proximo="8">Investigar o artefato</button>
+        </div>
+
+        <div class="passo" id="passo-7">
+            <p>Na caverna, você descobre um lago subterrâneo com uma luz estranha. No fundo do lago, há um brilho que parece ser a entrada para a cidade perdida.</p>
+            <button class="btn-proximo" data-proximo="9">Mergulhar no lago</button>
+            <button class="btn-proximo" data-proximo="10">Explorar a caverna mais a fundo</button>
+        </div>
+
+        <div class="passo" id="passo-8">
+            <p>Depois de investigar o artefato, você encontra um diário que menciona a cidade perdida. Agora, você deve seguir para a Amazônia!</p>
+            <button class="btn-proximo" data-proximo="7">Seguir para a Amazônia</button>
+        </div>
+
+        <div class="passo" id="passo-9">
+            <p>Ao mergulhar no lago, você encontra uma passagem secreta que o leva a uma câmara cheia de riquezas e tesouros antigos.</p>
+            <button class="btn-proximo" data-proximo="11">Explorar a cidade perdida</button>
+        </div>
+
+        <div class="passo" id="passo-10">
+            <p>Explorando mais a fundo a caverna, você encontra uma série de pinturas rupestres que falam sobre a história da cidade perdida.</p>
+            <button class="btn-proximo" data-proximo="12">Decifrar as pinturas</button>
+        </div>
+
+        <div class="passo" id="passo-11">
+            <img src="img/bolso.jpg" alt="encontrando uma cidade maravilhosa perdida no Amazonas">
+            <p>Я кинулась туда #прошла 3 курса за 1 день</p>
+        
+            <!-- Audio player -->
+            <audio controls id="audioPlayer">
+                <source src="img/Crystal Castles - Crimewave (original version high quality).mp3" type="audio/mpeg">
+            </audio>
+            
+            <!-- Lyrics section hidden by default -->
+            <div id="lyricsContainer">
+                <p id="lyricsText"></p> <!-- Local onde as legendas vão aparecer -->
+            </div>
+        </div>
+
+        <style>
+            #lyricsContainer {
+                text-align: center;
+                font-size: 1.5em;
+                margin-top: 20px;
+                color: #1DB954;
+                font-family: 'Arial', sans-serif;
+            }
+        
+            /* Define a animação de fade-in */
+            .fade-in {
+                animation: fadeIn 1.5s ease-in-out;
+            }
+        
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+        
+            /* Esconder a letra até o áudio começar */
+            .hidden {
+                display: none;
+            }
+        </style>
+        
+        <script>
+            const audioPlayer = document.getElementById('audioPlayer');
+            const lyricsText = document.getElementById('lyricsText');
+        
+            // Frases da música separadas em "alfabeto galáctico"
+            const galacticAlphabet = {
+                'A': 'α', 'B': 'β', 'C': 'ϲ', 'D': 'δ', 'E': 'ε', 'F': 'ϕ', 'G': 'γ',
+                'H': 'η', 'I': 'ι', 'J': 'ϳ', 'K': 'κ', 'L': 'λ', 'M': 'μ', 'N': 'ν',
+                'O': 'ο', 'P': 'ρ', 'Q': 'ϥ', 'R': 'ρ', 'S': 'σ', 'T': 'τ', 'U': 'υ',
+                'V': 'ν', 'W': 'ω', 'X': 'χ', 'Y': 'ψ', 'Z': 'ζ', ' ': ' ', ',': ',',
+                '.': '.', '!': '!', '?': '?', // adicione mais símbolos conforme necessário
+            };
+        
+            // Função para converter texto normal para alfabeto galáctico
+            function toGalactic(text) {
+                return text.split('').map(char => galacticAlphabet[char.toUpperCase()] || char).join('');
+            }
+        
+            // Frases da música separadas
+            const lyrics = [
+                "Eyes lit on sharp threats from dark lips",
+                "The lights press the soft skin to rough hands",
+                "Eyes lit on sharp threats from dark lips",
+                "The lights press the soft skin to rough hands",
+                "Eyes lit on sharp threats from dark lips",
+                "The lights press the soft skin to rough hands",
+                "Eyes lit on sharp threats from dark lips",
+                "The lights press the soft skin to rough hands"
+            ].map(toGalactic); // Converte todas as letras para o alfabeto galáctico
+        
+            let currentLine = 0; // Índice da frase atual
+            let lyricsInterval;
+        
+            // Função para exibir a próxima frase
+            function displayNextLine() {
+                if (currentLine < lyrics.length) {
+                    lyricsText.textContent = lyrics[currentLine];
+                    lyricsText.classList.add('fade-in'); // Adiciona animação de fade-in
+                    currentLine++;
+        
+                    // Remove a animação após a exibição
+                    setTimeout(() => {
+                        lyricsText.classList.remove('fade-in');
+                    }, 1500); // Duração da animação de fade-in
+                } else {
+                    clearInterval(lyricsInterval); // Para de exibir as frases quando todas foram mostradas
+                }
+            }
+        
+            // Adiciona o evento "play" para iniciar a exibição das frases
+            audioPlayer.addEventListener('play', function() {
+                currentLine = 0; // Reinicia a linha atual
+                // Exibe a primeira frase após 16 segundos
+                setTimeout(() => {
+                    displayNextLine(); // Exibe a primeira linha
+                    // Inicia o intervalo para as próximas frases após exibir a primeira
+                    lyricsInterval = setInterval(displayNextLine, 3000); // Mostra uma frase a cada 3 segundos
+                }, 16000); // 16 segundos
+            });
+        
+            // Adiciona o evento "pause" para pausar a exibição das frases
+            audioPlayer.addEventListener('pause', function() {
+                clearInterval(lyricsInterval);
+            });
+        
+            // Adiciona o evento "ended" para parar a exibição das frases quando a música terminar
+            audioPlayer.addEventListener('ended', function() {
+                clearInterval(lyricsInterval);
+            });
+        </script>
+
+        <div class="passo" id="passo-12">
+            <p>Retornando e escolhendo o rio à esquerda, você finalmente encontra a cachoeira escondida e as inscrições que levam à cidade perdida.</p>
+            <button class="btn-proximo" data-proximo="11">Explorar a cidade perdida</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
